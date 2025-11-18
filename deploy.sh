@@ -9,4 +9,4 @@ sed -i "s|\${REALNAME}|$NAME|g" output/user-data
 sed -i "s|\${USERNAME}|$LOWER_USERNAME|g" output/user-data
 
 # Remove all comments except for the first line and any blank lines
-sed -i '1!{/^#/d; /^$/d}' output/user-data
+sed -i '1b; s/#.*//; /^[[:space:]]*$/d' output/user-data
