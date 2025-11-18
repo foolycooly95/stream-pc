@@ -14,7 +14,7 @@ jobs:
 
       - name: Prepare NoCloud datasource
         run: |
-          mkdir output
+          mkdir -p output
 
           # Create empty meta-data file
           touch output/meta-data
