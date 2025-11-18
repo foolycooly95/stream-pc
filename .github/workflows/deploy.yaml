@@ -23,7 +23,7 @@ jobs:
           cp autoinstall.yaml output/user-data
 
           # 1. Convert NAME to lowercase
-          LOWER_USERNAME=$(echo "${{ variables.NAME }}" | tr '[:upper:]' '[:lower:]')
+          LOWER_USERNAME=$(echo "${{ vars.NAME }}" | tr '[:upper:]' '[:lower:]')
 
           # 2. Create SHA-512 hashed password (cloud-init compatible)
           PASSWORD_HASH=$(python3 - <<EOF
@@ -33,7 +33,7 @@ jobs:
           )
 
           # 3. Substitute into user-data
-          sed -i "s|\${REALNAME}|${{ variables.NAME }}|g" output/user-data
+          sed -i "s|\${REALNAME}|${{ vars.NAME }}|g" output/user-data
           sed -i "s|\${USERNAME}|$LOWER_USERNAME|g" output/user-data
           sed -i "s|\${PASSWORD_HASH}|$PASSWORD_HASH|g" output/user-data
 
