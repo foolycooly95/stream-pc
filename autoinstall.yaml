@@ -1,0 +1,81 @@
+#cloud-config
+autoinstall:
+  version: 1 # required
+
+  locale: en_GB.UTF-8
+
+  refresh-installer:
+    update: true
+
+  keyboard:
+    layout: gb
+    toggle: null
+    variant: ""
+
+  source:
+    id: ubuntu-desktop-minimal
+    search_drivers: true
+
+  network:
+    ethernets:
+      eno1:
+        dhcp4: true
+    version: 2
+
+  apt:
+    disable_components: []
+    fallback: offline-install
+    geoip: true
+    mirror-selection:
+      primary:
+        - country-mirror
+        - arches: [amd64, i386]
+          uri: http://archive.ubuntu.com/ubuntu/
+    preserve_sources_list: false
+    security:
+      - arches: [amd64, i386]
+        uri: http://security.ubuntu.com/ubuntu/
+    sources:
+      # Install OBS Studio from the PPA (latest version)
+      obsproject:
+        source: ppa:obsproject/obs-studio
+
+  storage:
+    layout:
+      name: direct
+      match:
+        ssd: true
+        size: largest
+
+  identity:
+    hostname: Stream-PC
+    # Password set in Secrets
+    password: ${PASSWORD_HASH}
+    # Realname/Username set in Variables
+    realname: ${REALNAME}
+    username: ${USERNAME}
+
+  ssh:
+    allow-pw: true
+    authorized-keys: []
+    install-server: true
+
+  # Install non-free codecs
+  codecs:
+    install: true
+
+  # Install third-party drivers
+  drivers:
+    install: true
+
+  packages:
+    - obs-studio
+
+  kernel:
+    package: linux-generic-hwe-24.04
+
+  timezone: Europe/London
+
+  updates: security
+
+  shutdown: reboot # reboot after install complete
