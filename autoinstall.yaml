@@ -18,7 +18,7 @@ autoinstall:
 
   network:
     ethernets:
-      eno1:
+      all:
         dhcp4: true
     version: 2
 
