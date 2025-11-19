@@ -15,6 +15,7 @@ jobs:
 
       - name: Validate autoinstall.yaml
         run: |
-          git clone https://github.com/canonical/subiquity.git
-          make subiquity/install_deps
+          git clone https://github.com/canonical/subiquity.git && cd subiquity/
+          make install_deps
+          cd ..
           ./subiquity/scripts/validate-autoinstall-user-data.py ./autoinstall.yaml
