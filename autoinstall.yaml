@@ -12,10 +12,6 @@ autoinstall:
     toggle: null
     variant: ""
 
-  source:
-    id: ubuntu-server-minimal
-    search_drivers: true
-
   network:
     ethernets:
       all:
