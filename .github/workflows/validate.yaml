@@ -15,7 +15,6 @@ jobs:
 
       - name: Validate autoinstall.yaml
         run: |
-          docker run --rm \
-            -v ${{ github.workspace }}:/workspace \
-            ghcr.io/canonical/ubuntu-autoinstall-validation:latest \
-            autoinstall-schema-validate /workspace/autoinstall.yaml
+          git clone https://github.com/canonical/subiquity.git && cd subiquity/
+          make install_deps
+          ./scripts/validate-autoinstall-user-data.py autoinstall.yaml
