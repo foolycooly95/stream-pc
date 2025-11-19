@@ -13,7 +13,7 @@ autoinstall:
     variant: ""
 
   source:
-    id: ubuntu-desktop-minimal
+    id: ubuntu-server-minimal
     search_drivers: true
 
   network:
