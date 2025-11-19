@@ -1,0 +1,21 @@
+name: Validate Autoinstall File
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Validate autoinstall.yaml
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/workspace \
+            ghcr.io/canonical/ubuntu-autoinstall-validation:latest \
+            autoinstall-schema-validate /workspace/autoinstall.yaml
