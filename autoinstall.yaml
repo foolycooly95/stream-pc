@@ -12,12 +12,6 @@ autoinstall:
     toggle: null
     variant: ""
 
-  network:
-    ethernets:
-      all:
-        dhcp4: true
-    version: 2
-
   apt:
     disable_components: []
     fallback: offline-install
