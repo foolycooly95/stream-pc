@@ -19,12 +19,14 @@ autoinstall:
     mirror-selection:
       primary:
         - country-mirror
-        - arches: [amd64, i386]
-          uri: http://archive.ubuntu.com/ubuntu/
+        - uri: http://archive.ubuntu.com/ubuntu/
+          arches: [amd64, i386]
+
     preserve_sources_list: false
     security:
-      - arches: [amd64, i386]
-        uri: http://security.ubuntu.com/ubuntu/
+      - uri: http://security.ubuntu.com/ubuntu/
+        arches: [amd64, i386]
+
     sources:
       # Install OBS Studio from the PPA (latest version)
       obsproject:
