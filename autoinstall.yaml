@@ -60,6 +60,10 @@ autoinstall:
   drivers:
     install: true
 
+  snaps:
+    - name: chezmoi
+      classic: true
+
   packages:
     - obs-studio
 
